@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { track } from '@vercel/analytics/next';
+import { track } from '@vercel/analytics';
 import { Brand } from '@/app/data/brands';
 
 interface BrandCardProps {
@@ -24,8 +24,9 @@ export default function BrandCard({ brand, rank, gclidValue }: BrandCardProps) {
     track('Brand Click', { brand: brand.name });
     
     // Google Ads Conversion tracking (if gtag is available)
-    if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-      (window as any).gtag_report_conversion(finalUrl);
+    const win = window as typeof window & { gtag_report_conversion?: (url: string) => void };
+    if (typeof window !== 'undefined' && win.gtag_report_conversion) {
+      win.gtag_report_conversion(finalUrl);
     } else {
       window.open(finalUrl, '_blank');
     }

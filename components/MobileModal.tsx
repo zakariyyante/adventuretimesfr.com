@@ -16,7 +16,7 @@ export default function MobileModal({ brands, gclidValue }: MobileModalProps) {
 
   useEffect(() => {
     if (gclidValue && mobileBrands.length > 0) {
-      setIsOpen(true);
+      setIsOpen(true); // eslint-disable-line react-hooks/set-state-in-effect
       // Prevent scrolling when modal is open
       document.body.style.overflow = 'hidden';
     }

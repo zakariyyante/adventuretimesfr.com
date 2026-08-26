@@ -7,8 +7,11 @@ export const metadata: Metadata = {
   title: "Adventure Times FR | Meilleurs Sites de Jeux par Navigateur",
   description: "Découvrez les meilleurs sites de jeux par navigateur en France. Revues d'experts, bonus exclusifs et jeux gratuits.",
   icons: {
-    icon: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    apple: "/favicon.png",
   },
 };
 
