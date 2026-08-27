@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { Brand } from '@/app/data/brands';
 import BrandCard from './BrandCard';
 
@@ -16,8 +17,7 @@ export default function MobileModal({ brands, gclidValue }: MobileModalProps) {
 
   useEffect(() => {
     if (gclidValue && mobileBrands.length > 0) {
-      setIsOpen(true); // eslint-disable-line react-hooks/set-state-in-effect
-      // Prevent scrolling when modal is open
+      setIsOpen(true);
       document.body.style.overflow = 'hidden';
     }
     
@@ -29,31 +29,32 @@ export default function MobileModal({ brands, gclidValue }: MobileModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] bg-slate-950 overflow-y-auto">
+    <div className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto">
       <div className="min-h-screen flex flex-col">
         {/* Header */}
-        <div className="p-4 border-b border-slate-800 flex justify-between items-center bg-slate-900 sticky top-0 z-10">
-          <div className="text-white font-black tracking-tighter text-xl">
-            ADVENTURE<span className="text-blue-500 text-sm ml-1">MOBILE</span>
+        <div className="p-6 border-b border-white/5 flex justify-between items-center bg-[#050505] sticky top-0 z-10 backdrop-blur-xl">
+          <div className="text-white font-black tracking-tighter text-2xl italic">
+            ADVENTURE<span className="text-purple-500 text-sm ml-1 not-italic">TIMES</span>
           </div>
           <button 
             onClick={() => setIsOpen(false)}
-            className="text-slate-400 hover:text-white p-2"
+            className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
 
         {/* Hero */}
-        <div className="p-6 bg-gradient-to-b from-blue-900/20 to-transparent text-center">
-          <h2 className="text-2xl font-black text-white mb-2 uppercase italic tracking-wide">
-            Offres Spéciales <span className="text-blue-500">Mobile</span>
+        <div className="p-8 text-left relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 blur-[80px] rounded-full"></div>
+          <h2 className="text-4xl font-black text-white mb-4 uppercase italic tracking-tighter leading-none">
+            OFFRES <br /><span className="text-purple-500">EXCLUSIVES</span>
           </h2>
-          <p className="text-slate-400 text-sm">Les meilleurs jeux pour votre smartphone</p>
+          <p className="text-slate-500 text-sm font-medium">Les meilleurs titres pour votre smartphone.</p>
         </div>
 
         {/* Brand Grid */}
-        <div className="p-4 flex flex-col gap-4">
+        <div className="p-6 flex flex-col gap-6">
           {mobileBrands.map((brand, idx) => (
             <BrandCard 
               key={brand.id} 
@@ -65,13 +66,24 @@ export default function MobileModal({ brands, gclidValue }: MobileModalProps) {
         </div>
 
         {/* Footer info */}
-        <div className="mt-auto p-8 text-center bg-slate-900/50">
-          <div className="flex justify-center items-center gap-2 font-bold text-red-500 text-[10px] mb-4">
-            <span>🔞 18+ JOUER RESPONSABLE</span>
+        <div className="mt-auto p-12 text-center bg-white/5">
+          <div className="flex justify-center items-center gap-4 mb-8">
+            <div className="relative w-8 h-8">
+              <Image src="/age-18.svg" alt="18+" fill className="object-contain" />
+            </div>
+            <div className="relative w-16 h-8">
+              <Image src="/anj.webp" alt="ANJ" fill className="object-contain" />
+            </div>
+            <div className="relative w-20 h-8">
+              <Image src="/mediateur.webp" alt="Médiateur" fill className="object-contain" />
+            </div>
+            <div className="relative w-24 h-8">
+              <Image src="/joueurs.webp" alt="Joueurs Info Service" fill className="object-contain" />
+            </div>
           </div>
           <button 
             onClick={() => setIsOpen(false)}
-            className="text-blue-500 text-sm font-bold uppercase tracking-widest border border-blue-500/30 px-6 py-2 rounded-full"
+            className="w-full py-4 bg-white text-black font-black uppercase tracking-widest text-sm rounded-2xl"
           >
             Fermer
           </button>

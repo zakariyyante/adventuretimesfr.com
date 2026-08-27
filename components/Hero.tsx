@@ -1,37 +1,27 @@
 export default function Hero() {
-  const currentYear = new Date().getFullYear();
-  
   return (
-    <section className="relative py-20 px-4 overflow-hidden bg-slate-950">
-      <div className="absolute inset-0 felt-texture opacity-30"></div>
-      <div className="container mx-auto relative z-10 text-center">
-        <div className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-400 mb-8">
-          <span className="mr-2">🏆</span> Le premier centre d&apos;examen des jeux en France {currentYear}
-        </div>
-        
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6">
-          Trouvez les Meilleurs Sites de <span className="gold-text">Jeux par Navigateur</span> en France
-        </h1>
-        
-        <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 mb-12">
-          Revues d&apos;experts, bonus exclusifs et paiements rapides. Tout ce dont vous avez besoin pour jouer en toute sécurité.
-        </p>
-        
-        <div className="flex flex-wrap justify-center gap-6">
-          <div className="flex items-center space-x-2 bg-slate-900/50 border border-slate-800 px-6 py-3 rounded-xl">
-            <span className="text-green-500 text-xl">🛡️</span>
-            <span className="font-semibold text-slate-200">Sous Licence</span>
-          </div>
-          <div className="flex items-center space-x-2 bg-slate-900/50 border border-slate-800 px-6 py-3 rounded-xl">
-            <span className="text-blue-500 text-xl">⭐</span>
-            <span className="font-semibold text-slate-200">Approuvé par des Experts</span>
-          </div>
-          <div className="flex items-center space-x-2 bg-slate-900/50 border border-slate-800 px-6 py-3 rounded-xl">
-            <span className="text-yellow-500 text-xl">⚡</span>
-            <span className="font-semibold text-slate-200">Retraits Rapides</span>
-          </div>
+    <section className="relative pt-48 pb-24 px-6 overflow-hidden bg-[#050505]">
+      {/* Subtle Background Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full pointer-events-none opacity-10">
+        <div className="absolute top-[-10%] left-1/4 w-[50%] h-[50%] bg-cyan-500/20 blur-[120px] rounded-full"></div>
+      </div>
+      
+      <div className="container mx-auto max-w-7xl relative z-10 text-center">
+        <div className="flex flex-col items-center">
+          <h1 className="text-4xl md:text-7xl font-black tracking-tighter text-white mb-10 uppercase leading-[1.1] max-w-5xl">
+            Les jeux <span className="text-cyan-400">à</span> lancer dans le <br className="hidden md:block" />
+            navigateur en France
+          </h1>
+          
+          <p className="text-slate-400 text-lg md:text-xl font-medium mb-12 leading-relaxed max-w-3xl">
+            Des jeux qui s&apos;ouvrent dans un onglet, sans installation, <br className="hidden md:block" />
+            avec des catégories lisibles et des communautés actives.
+          </p>
         </div>
       </div>
+      
+      {/* Minimal scanline effect */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.02] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]"></div>
     </section>
   );
 }

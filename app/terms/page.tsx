@@ -34,7 +34,7 @@ export default function TermsOfService() {
           <section>
             <h2 className="text-2xl font-bold text-white">4. Limitation de Responsabilité</h2>
             <p>
-              AdventureTimesFR ne pourra être tenu responsable de toute perte ou dommage résultant de votre utilisation des sites tiers recommandés. Jouez toujours de manière responsable.
+              adventuretimesfr.com ne pourra être tenu responsable de toute perte ou dommage résultant de votre utilisation des sites tiers recommandés. Jouez toujours de manière responsable.
             </p>
           </section>
         </div>

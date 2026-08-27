@@ -11,96 +11,86 @@ interface BrandCardProps {
 }
 
 export default function BrandCard({ brand, rank, gclidValue }: BrandCardProps) {
-  const buildUrl = (url: string, gclid?: string) => {
-    if (!gclid) return url;
-    // Append gclid to the trailing parameter (assuming it ends with = )
-    return `${url}${gclid}`;
-  };
-
-  const finalUrl = buildUrl(brand.url, gclidValue);
+  const finalUrl = `/go?f=${brand.f}${gclidValue ? `&gclid=${gclidValue}` : ''}`;
 
   const handleCardClick = () => {
-    // Vercel Analytics tracking
     track('Brand Click', { brand: brand.name });
     
-    // Google Ads Conversion tracking (if gtag is available)
-    const win = window as typeof window & { gtag_report_conversion?: (url: string) => void };
-    if (typeof window !== 'undefined' && win.gtag_report_conversion) {
-      win.gtag_report_conversion(finalUrl);
+    if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+      (window as any).gtag_report_conversion(finalUrl);
     } else {
       window.open(finalUrl, '_blank');
     }
   };
 
-  const getRankBadge = (rank: number) => {
-    if (rank === 1) return <div className="absolute -top-3 -left-3 bg-yellow-500 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20">#1 GOLD</div>;
-    if (rank === 2) return <div className="absolute -top-3 -left-3 bg-slate-300 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20">#2 SILVER</div>;
-    if (rank === 3) return <div className="absolute -top-3 -left-3 bg-orange-500 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20">#3 BRONZE</div>;
-    return null;
-  };
-
   return (
     <div 
-      className="relative casino-card-bg rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6 group cursor-pointer overflow-hidden"
+      className="group gaming-card p-1"
       onClick={handleCardClick}
     >
-      {rank && getRankBadge(rank)}
-      
-      {/* Corner Decorations */}
-      <div className="absolute -top-1 -right-1 w-8 h-8 border-t-2 border-r-2 border-blue-500/30 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-      <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-blue-500/30 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      <div className="bg-[#0f0f12] rounded-[22px] p-6 h-full flex flex-col relative z-10">
+        {/* Category & Badge */}
+        <div className="flex justify-between items-center mb-6">
+          <span className="text-[10px] font-black tracking-[0.2em] text-purple-500 uppercase">
+            {rank === 1 ? '🔥 Top Rated' : '⚡ Gaming Site'}
+          </span>
+          {rank && (
+            <span className="text-white/20 font-black text-2xl italic">0{rank}</span>
+          )}
+        </div>
 
-      {/* LEFT: Logo + Rating */}
-      <div className="flex flex-col items-center gap-3 w-full md:w-1/3">
-        <div className="relative w-40 h-20 bg-slate-900 rounded-lg p-4 flex items-center justify-center">
+        {/* Logo Section */}
+        <div className="relative w-full h-32 mb-6 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors duration-500 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <Image
             src={brand.logo}
             alt={brand.name}
-            width={120}
-            height={48}
-            className="object-contain"
+            width={160}
+            height={64}
+            className="object-contain z-10 group-hover:scale-110 transition-transform duration-500"
           />
         </div>
-        <div className="flex flex-col items-center">
-          <div className="text-2xl font-bold text-white">{brand.rating.toFixed(1)}</div>
-          <div className="flex text-yellow-500 text-sm">
-            {[...Array(5)].map((_, i) => (
-              <span key={i} className={i < Math.floor(brand.rating / 2) ? "opacity-100" : "opacity-30"}>★</span>
-            ))}
-          </div>
-          <div className="text-[10px] text-slate-500 mt-1 uppercase tracking-widest">{brand.votes} VOTES</div>
-        </div>
-      </div>
 
-      {/* RIGHT: Bonus + CTA */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full md:w-2/3 gap-6">
-        <div className="text-center md:text-left">
-          <div className="text-sm text-blue-400 font-semibold mb-1 uppercase tracking-wider">OFFRE EXCLUSIVE</div>
-          <div className="text-lg md:text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
-            {brand.bonus}
+        {/* Info */}
+        <div className="flex-grow">
+          <h3 className="text-2xl font-black text-white mb-2 tracking-tight group-hover:text-purple-400 transition-colors">
+            {brand.name}
+          </h3>
+          <p className="text-slate-400 text-sm leading-relaxed mb-6">
+            {brand.details}
+          </p>
+          
+          <div className="flex items-center gap-4 mb-8">
+            <div className="flex flex-col">
+              <span className="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Score</span>
+              <span className="text-xl font-black text-cyan-400">{brand.rating.toFixed(1)}</span>
+            </div>
+            <div className="w-px h-8 bg-white/10"></div>
+            <div className="flex flex-col">
+              <span className="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Votes</span>
+              <span className="text-xl font-black text-white">{brand.votes.toLocaleString()}</span>
+            </div>
           </div>
         </div>
+
+        {/* CTA */}
+        <button 
+          className="w-full py-4 bg-white text-black font-black uppercase tracking-widest text-sm rounded-xl hover:bg-purple-500 hover:text-white transition-all duration-300 transform group-hover:translate-y-[-4px] active:translate-y-0 shadow-xl"
+          onClick={(e) => {
+            e.stopPropagation();
+            handleCardClick();
+          }}
+        >
+          Jouer Maintenant
+        </button>
         
-        <div className="flex flex-col items-center gap-3 w-full md:w-auto">
-          <button 
-            className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-black uppercase tracking-widest rounded-xl transition-all shadow-[0_4px_20px_rgba(59,130,246,0.4)] active:scale-95"
-            onClick={(e) => {
-              e.stopPropagation();
-              handleCardClick();
-            }}
-          >
-            Visiter
-          </button>
-          <div className="text-[10px] text-slate-500 font-medium italic">T&C s&apos;appliquent</div>
-        </div>
+        {/* Mobile Indicator */}
+        {brand.isMobile && (
+          <div className="absolute top-6 right-6 text-white/10 group-hover:text-cyan-500/50 transition-colors">
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+          </div>
+        )}
       </div>
-      
-      {/* Mobile Indicator */}
-      {brand.isMobile && (
-        <div className="absolute top-4 right-4 text-slate-500">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-        </div>
-      )}
     </div>
   );
 }

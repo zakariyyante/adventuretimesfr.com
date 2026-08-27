@@ -4,11 +4,10 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Adventure Times FR | Meilleurs Sites de Jeux par Navigateur",
-  description: "Découvrez les meilleurs sites de jeux par navigateur en France. Revues d'experts, bonus exclusifs et jeux gratuits.",
+  title: "adventuretimesfr.com | Meilleurs Sites de Jeux par Navigateur",
+  description: "Découvrez les meilleurs sites de jeux par navigateur en France. Revues d'experts, offres exclusives et jeux gratuits.",
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon.png", type: "image/png" },
     ],
     apple: "/favicon.png",

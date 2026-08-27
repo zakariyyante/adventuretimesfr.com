@@ -27,7 +27,7 @@ export default function PrivacyPolicy() {
           <section>
             <h2 className="text-2xl font-bold text-white">3. Liens Affiliés</h2>
             <p>
-              AdventureTimesFR contient des liens vers des sites tiers. Nous ne sommes pas responsables des politiques de confidentialité de ces sites externes. Nous vous encourageons à lire leurs conditions générales.
+              adventuretimesfr.com contient des liens vers des sites tiers. Nous ne sommes pas responsables des politiques de confidentialité de ces sites externes. Nous vous encourageons à lire leurs conditions générales.
             </p>
           </section>
           

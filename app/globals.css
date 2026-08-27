@@ -5,52 +5,69 @@
   --color-card-bg: var(--card-bg);
   --color-primary: var(--primary);
   --color-accent: var(--accent);
+  --color-neon-purple: #a855f7;
+  --color-neon-cyan: #06b6d4;
+  --color-neon-pink: #ec4899;
 }
 
 :root {
-  --background: #0f172a;
-  --card-bg: #1e293b;
-  --primary: #3b82f6;
-  --accent: #f59e0b;
-  --foreground: #f8fafc;
+  --background: #050505;
+  --card-bg: #0f0f12;
+  --primary: #a855f7;
+  --accent: #06b6d4;
+  --foreground: #ffffff;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 @layer utilities {
-  .gold-text {
-    @apply bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-600 bg-clip-text text-transparent;
+  .gaming-gradient-text {
+    @apply bg-gradient-to-r from-purple-500 via-cyan-500 to-pink-500 bg-clip-text text-transparent;
   }
   
-  .casino-card-bg {
-    @apply bg-slate-800 border border-slate-700 hover:border-blue-500 transition-all duration-300;
+  .gaming-card {
+    @apply bg-[#0f0f12] border border-white/5 hover:border-purple-500/50 transition-all duration-500 rounded-3xl relative overflow-hidden;
   }
   
-  .felt-texture {
-    background-image: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 100%);
+  .gaming-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500;
+  }
+
+  .gaming-glow {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
   }
   
-  .casino-glow {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+  .neon-border {
+    @apply border border-white/10 hover:border-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.1)] transition-all;
   }
   
-  .gold-shimmer {
-    background: linear-gradient(
-      90deg,
-      rgba(245, 158, 11, 0) 0%,
-      rgba(245, 158, 11, 0.2) 50%,
-      rgba(245, 158, 11, 0) 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 2s infinite;
+  .scanline {
+    width: 100%;
+    height: 100px;
+    z-index: 10;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(168, 85, 247, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0.1;
+    position: absolute;
+    bottom: 100%;
+    animation: scanline 10s linear infinite;
   }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+@keyframes scanline {
+  0% { bottom: 100%; }
+  100% { bottom: -100px; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
