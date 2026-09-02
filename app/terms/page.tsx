@@ -6,14 +6,14 @@ export default function TermsOfService() {
     <main className="min-h-screen flex flex-col">
       <Header />
       <div className="container mx-auto max-w-4xl py-20 px-4 prose prose-invert">
-        <h1 className="text-4xl font-bold text-white mb-8">Conditions d&apos;Utilisation</h1>
-        <p className="text-slate-400">Dernière mise à jour : 26 août 2026</p>
+        <h1 className="text-4xl font-bold text-white mb-8 uppercase tracking-tighter">Conditions d&apos;Utilisation</h1>
+        <p className="text-slate-400">Dernière mise à jour : 2 septembre 2026</p>
         
         <div className="space-y-6 text-slate-300 mt-10">
           <section>
-            <h2 className="text-2xl font-bold text-white">1. Acceptation des Conditions</h2>
+            <h2 className="text-2xl font-bold text-white uppercase tracking-tight">1. Acceptation des Conditions</h2>
             <p>
-              En accédant à adventuretimesfr.com, vous acceptez d&apos;être lié par ces conditions d&apos;utilisation et toutes les lois et réglementations applicables en France.
+              En accédant à PrismeFR.com, vous acceptez d&apos;être lié par ces conditions d&apos;utilisation et toutes les lois et réglementations applicables en France.
             </p>
           </section>
           
@@ -32,9 +32,9 @@ export default function TermsOfService() {
           </section>
           
           <section>
-            <h2 className="text-2xl font-bold text-white">4. Limitation de Responsabilité</h2>
+            <h2 className="text-2xl font-bold text-white uppercase tracking-tight">4. Limitation de Responsabilité</h2>
             <p>
-              adventuretimesfr.com ne pourra être tenu responsable de toute perte ou dommage résultant de votre utilisation des sites tiers recommandés. Jouez toujours de manière responsable.
+              PrismeFR.com ne pourra être tenu responsable de toute perte ou dommage résultant de votre utilisation des sites tiers recommandés. Jouez toujours de manière responsable.
             </p>
           </section>
         </div>

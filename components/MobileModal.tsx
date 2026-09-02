@@ -34,7 +34,7 @@ export default function MobileModal({ brands, gclidValue }: MobileModalProps) {
         {/* Header */}
         <div className="p-6 border-b border-white/5 flex justify-between items-center bg-[#050505] sticky top-0 z-10 backdrop-blur-xl">
           <div className="text-white font-black tracking-tighter text-2xl italic">
-            ADVENTURE<span className="text-purple-500 text-sm ml-1 not-italic">TIMES</span>
+            PRISME<span className="text-cyan-400 text-sm ml-1 not-italic">FR</span>
           </div>
           <button 
             onClick={() => setIsOpen(false)}

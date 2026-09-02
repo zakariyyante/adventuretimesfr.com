@@ -4,8 +4,8 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "adventuretimesfr.com | Meilleurs Sites de Jeux par Navigateur",
-  description: "Découvrez les meilleurs sites de jeux par navigateur en France. Revues d'experts, offres exclusives et jeux gratuits.",
+  title: "PrismeFR.com | Le Hub de Jeux Nouvelle Génération",
+  description: "Découvrez le prisme du gaming en France. Une sélection courte et précise de jeux par navigateur analysés pour vous.",
   icons: {
     icon: [
       { url: "/favicon.png", type: "image/png" },

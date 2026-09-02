@@ -27,7 +27,7 @@ export default async function Home({ searchParams }: PageProps) {
               NOTRE <span className="text-purple-500 italic">CATALOGUE</span>
             </h2>
             <p className="text-slate-500 font-medium max-w-lg">
-              Six titres avec des communautés actives, des liens officiels et des sessions qui s&apos;adaptent à votre routine — sans liste interminable.
+              Une sélection exclusive avec une communauté active, des liens officiels et des sessions qui s&apos;adaptent à votre routine.
             </p>
           </div>
           
@@ -146,7 +146,7 @@ export default async function Home({ searchParams }: PageProps) {
       <section className="py-24 px-6 border-y border-white/5">
         <div className="container mx-auto">
           <div className="text-purple-500 text-[10px] font-black uppercase tracking-[0.3em] mb-4 text-center">LISTE COURTE</div>
-          <h2 className="text-4xl font-black text-white uppercase tracking-tighter mb-16 text-center italic">UN CATALOGUE DE PROPOS <span className="text-purple-500">LIMITÉ</span></h2>
+          <h2 className="text-4xl font-black text-white uppercase tracking-tighter mb-16 text-center italic">UNE SÉLECTION DE PROPOS <span className="text-purple-500">LIMITÉE</span></h2>
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-white/5 border border-white/10">

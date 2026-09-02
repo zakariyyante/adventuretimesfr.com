@@ -9,11 +9,11 @@ export default function Footer() {
       <div className="container mx-auto max-w-7xl">
         {/* Top Row: Logo & Summary */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center group">
             <div className="relative h-10 w-48">
               <Image
                 src="/logo.png"
-                alt="adventuretimesfr.com"
+                alt="PrismeFR.com"
                 fill
                 className="object-contain"
               />
@@ -65,7 +65,7 @@ export default function Footer() {
 
         {/* Sixth Row: Copyright */}
         <div className="text-slate-600 text-[10px] font-medium tracking-wide">
-          © {currentYear} <span className="font-black">adventuretimesfr.com</span>. Tous droits réservés.
+          © {currentYear} <span className="font-black">PrismeFR.com</span>. Tous droits réservés.
         </div>
       </div>
     </footer>

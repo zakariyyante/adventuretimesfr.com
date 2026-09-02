@@ -9,7 +9,7 @@ export default function Header() {
           <div className="relative h-10 w-48 transform group-hover:scale-105 transition-transform duration-300">
             <Image
               src="/logo.png"
-              alt="adventuretimesfr.com"
+              alt="PrismeFR.com"
               fill
               className="object-contain"
               priority
